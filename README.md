@@ -12,3 +12,17 @@ AI Chatbots in Neovim without needing API keys
 ## Requirements
 
 - [tgpt](https://github.com/aandrew-me/tgpt) AI Chatbots in terminal without needing API keys
+
+# Installation 
+Lua
+```lua
+-- using packer
+
+use 'RayenMnif/tgpt.nvim'
+```
+
+# Usage 
+Lua
+```lua
+require("tgpt").setup()
+```
