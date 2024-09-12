@@ -17,7 +17,6 @@ AI Chatbots in Neovim without needing API keys
 Lua
 ```lua
 -- using packer
-
 use 'RayenMnif/tgpt.nvim'
 ```
 
