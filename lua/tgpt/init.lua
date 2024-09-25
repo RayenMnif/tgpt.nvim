@@ -1,6 +1,6 @@
 local M = {}
 
-local InteractiveChat = function ()
+local createBuffer = function ()
     WIDTH = vim.api.nvim_get_option("columns")
     HEIGHT = vim.api.nvim_get_option("lines")
     vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
@@ -13,7 +13,10 @@ local InteractiveChat = function ()
             style = 'minimal',
             border = 'single'
     })
+end
 
+local InteractiveChat = function ()
+    createBuffer()
     vim.api.nvim_command("startinsert")
     vim.fn.termopen("tgpt -i", {on_exit = function ()
         local win_id = vim.api.nvim_get_current_win()
@@ -24,40 +27,14 @@ end
 local RateMyCode = function ()
    local file = vim.api.nvim_buf_get_name(0)
    local prompt = "cat " .. file .. " | tgpt 'Rate the code' "
-
-   WIDTH = vim.api.nvim_get_option("columns")
-   HEIGHT = vim.api.nvim_get_option("lines")
-   vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
-       relative = 'editor',
-       width = math.floor(WIDTH / 4.5),
-       height = math.floor(HEIGHT / 1.1),
-       col = WIDTH,
-       row = 0,
-       anchor = "NE",
-       style = 'minimal',
-       border = 'single'
-   })
-
+   createBuffer()
    vim.fn.termopen(prompt)
 end
 
 local CheckForBugs = function ()
    local file = vim.api.nvim_buf_get_name(0)
-    local prompt = "cat " .. file .. " | tgpt 'Check for bugs' "
-
-   WIDTH = vim.api.nvim_get_option("columns")
-   HEIGHT = vim.api.nvim_get_option("lines")
-   vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
-       relative = 'editor',
-       width = math.floor(WIDTH / 4.5),
-       height = math.floor(HEIGHT / 1.1),
-       col = WIDTH,
-       row = 0,
-       anchor = "NE",
-       style = 'minimal',
-       border = 'single'
-   })
-
+   local prompt = "cat " .. file .. " | tgpt 'Check for bugs' "
+   createBuffer()
    vim.fn.termopen(prompt)
 end
 
