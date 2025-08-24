@@ -52,9 +52,4 @@ config = function()
         default_prompt = "Don't write bugs!",
     })
 end
-
-```
-
-```
-
 ```
